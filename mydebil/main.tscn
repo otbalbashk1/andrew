@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bmv5el7456e6x"]
+
+[ext_resource type="Texture2D" uid="uid://yadg1mjitolv" path="res://normal.png" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cuff8jld8bfua" path="res://комнатв6.png" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://cuuah0wnxroy" path="res://character.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cxdxbik3mkyyj" path="res://blush.png" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07igm"]
+size = Vector2(164, 208)
+
+[node name="Main" type="Node2D" unique_id=1279507230]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1929990063]
+position = Vector2(586, 370.99994)
+scale = Vector2(0.35643393, 0.32002798)
+texture = ExtResource("1_1bvp3")
+
+[node name="Character" type="Sprite2D" parent="." unique_id=1393608239]
+position = Vector2(587, 574)
+scale = Vector2(0.84184873, 0.7882148)
+texture = ExtResource("1_0xm2m")
+script = ExtResource("2_h2yge")
+normal_texture = ExtResource("1_0xm2m")
+blush_texture = ExtResource("3_h2yge")
+
+[node name="ClickArea" type="Area2D" parent="Character" unique_id=1345190275]
+position = Vector2(60, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/ClickArea" unique_id=1094084918]
+position = Vector2(-80, -784)
+shape = SubResource("RectangleShape2D_07igm")
+
+[connection signal="input_event" from="Character/ClickArea" to="Character" method="_on_click_area_input_event"]
